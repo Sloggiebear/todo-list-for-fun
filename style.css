@@ -23,3 +23,145 @@ form {
 form input {
   flex-grow: 1;
 }
+
+.btn-submit {
+  border-radius: 0px;
+  padding: 10px 20px;
+  border: 0px;
+  background-color: pink;
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.btn-delete {
+  border-radius: 50%;
+  border: none;
+  background-color: orange;
+  padding: 10px;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+}
+
+.btn-complete {
+  border-radius: 50%;
+  border: none;
+  background-color: #008f6b;
+  padding: 10px;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+}
+
+.image-delete,
+.image-complete {
+  pointer-events: none;
+  width: 100%;
+  height: auto;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.todo-item span {
+  flex-grow: 1;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  padding: 10px;
+  margin-right: 10px;
+  max-width: 80%;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.completed {
+  opacity: 50%;
+  text-decoration: line-through;
+}
+
+.display-completed {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.d-none {
+  display: none;
+}
+
+.toggle-input {
+  display: none;
+}
+
+.custom-toggle-label {
+  --width: 60px;
+  --height: calc(var(--width) / 2);
+  --border-radius: calc(var(--width) / 2);
+  --font-size: 0.7rem;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  margin: 0px 10px;
+}
+
+.custom-toggle-label::before {
+  content: "NO";
+  position: absolute;
+  color: white;
+  z-index: 5;
+  top: 50%;
+  right: 3px;
+  transform: translate(-20%, -50%);
+  font-weight: bold;
+  font-size: var(--font-size);
+}
+
+.custom-toggle-input {
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--border-radius);
+  background-color: lightgray;
+  transition: background 0.2s;
+  font-size: var(--font-size);
+}
+
+.toggle-input:checked ~ .custom-toggle-input {
+  background-color: #a1317c;
+}
+
+.custom-toggle-input::before {
+  content: "YES";
+  position: absolute;
+  color: white;
+  z-index: 5;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  opacity: 0;
+}
+
+.toggle-input:checked ~ .custom-toggle-input::before {
+  opacity: 1;
+}
+
+.custom-toggle-input::after {
+  content: "";
+  position: absolute;
+  height: var(--height);
+  width: var(--height);
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 10px #acacac;
+  transition: transform 0.2s;
+}
+
+.toggle-input:checked ~ .custom-toggle-input::after {
+  transform: translateX(var(--height));
+}

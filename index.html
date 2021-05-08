@@ -10,9 +10,25 @@
   <body>
     <main>
       <div class="container">
-        <h3>Sure, give yourself more shit to do</h3>
+        <div class="display-completed">
+          <span>Hide completed to-dos?</span>
+          <label class="custom-toggle-label" for="custom-toggle">
+            <input
+              type="checkbox"
+              class="toggle-input"
+              name="custom-toggle"
+              id="custom-toggle"
+            />
+            <div class="custom-toggle-input"></div>
+          </label>
+        </div>
+
         <form>
-          <input class="todo-input" type="text" />
+          <input
+            class="todo-input"
+            type="text"
+            placeholder="Sure, give yourself more shit to do"
+          />
           <button class="btn-submit" type="submit">+</button>
         </form>
         <h3>Shit you have to do</h3>
