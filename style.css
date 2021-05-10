@@ -2,7 +2,8 @@
 * {
   margin: 0px;
   padding: 0px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -17,11 +18,15 @@ body {
 
 form {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 form input {
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 .btn-submit {
@@ -37,12 +42,11 @@ form input {
 .btn-delete {
   border-radius: 50%;
   border: none;
-  background-color: orange;
+  background-color: #dfdfdf;
   padding: 10px;
   display: inline-block;
   width: 35px;
   height: 35px;
-  margin-right: 10px;
 }
 
 .btn-complete {
@@ -63,15 +67,24 @@ form input {
 }
 
 .todo-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 10px;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .todo-item span {
-  flex-grow: 1;
-  background-color: #f7f7f7;
-  border-radius: 20px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   padding: 10px;
   margin-right: 10px;
   max-width: 80%;
@@ -85,9 +98,16 @@ form input {
 }
 
 .display-completed {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .d-none {
@@ -116,7 +136,8 @@ form input {
   z-index: 5;
   top: 50%;
   right: 3px;
-  transform: translate(-20%, -50%);
+  -webkit-transform: translate(-20%, -50%);
+          transform: translate(-20%, -50%);
   font-weight: bold;
   font-size: var(--font-size);
 }
@@ -127,6 +148,7 @@ form input {
   height: var(--height);
   border-radius: var(--border-radius);
   background-color: lightgray;
+  -webkit-transition: background 0.2s;
   transition: background 0.2s;
   font-size: var(--font-size);
 }
@@ -142,7 +164,8 @@ form input {
   z-index: 5;
   top: 50%;
   left: 25%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   font-weight: bold;
   opacity: 0;
 }
@@ -158,10 +181,16 @@ form input {
   width: var(--height);
   border-radius: 50%;
   background: white;
-  box-shadow: 0 0 10px #acacac;
+  -webkit-box-shadow: 0 0 10px #acacac;
+          box-shadow: 0 0 10px #acacac;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
   transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
 }
 
 .toggle-input:checked ~ .custom-toggle-input::after {
-  transform: translateX(var(--height));
+  -webkit-transform: translateX(var(--height));
+          transform: translateX(var(--height));
 }
+/*# sourceMappingURL=style.css.map */

@@ -38,12 +38,11 @@ form {
 .btn-delete {
   border-radius: 50%;
   border: none;
-  background-color: orange;
+  background-color: rgb(223, 223, 223);
   padding: 10px;
   display: inline-block;
   width: 35px;
   height: 35px;
-  margin-right: 10px;
 }
 
 .btn-complete {
@@ -67,11 +66,12 @@ form {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  background-color: rgb(247, 247, 247);
+  border-radius: 20px;
+  justify-content: space-between;
 
   span {
     flex-grow: 1;
-    background-color: rgb(247, 247, 247);
-    border-radius: 20px;
     padding: 10px;
     margin-right: 10px;
     max-width: 80%;
@@ -100,6 +100,7 @@ form {
 .toggle-input {
   display: none;
 }
+
 .custom-toggle-label {
   --width: 60px;
   --height: calc(var(--width) / 2);

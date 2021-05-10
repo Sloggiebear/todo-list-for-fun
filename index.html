@@ -10,17 +10,19 @@
   <body>
     <main>
       <div class="container">
-        <div class="display-completed">
-          <span>Hide completed to-dos?</span>
-          <label class="custom-toggle-label" for="custom-toggle">
-            <input
-              type="checkbox"
-              class="toggle-input"
-              name="custom-toggle"
-              id="custom-toggle"
-            />
-            <div class="custom-toggle-input"></div>
-          </label>
+        <div class="settings-modal">
+          <div class="display-completed">
+            <span>Hide completed to-dos?</span>
+            <label class="custom-toggle-label" for="custom-toggle">
+              <input
+                type="checkbox"
+                class="toggle-input"
+                name="custom-toggle"
+                id="custom-toggle"
+              />
+              <div class="custom-toggle-input"></div>
+            </label>
+          </div>
         </div>
 
         <form>
@@ -33,6 +35,9 @@
         </form>
         <h3>Shit you have to do</h3>
         <div class="todo-list-container"></div>
+        <div class="done-list-container">
+          <h3>Shit you have done gurl, gg.</h3>
+        </div>
       </div>
     </main>
 
