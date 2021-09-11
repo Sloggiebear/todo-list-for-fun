@@ -12,7 +12,7 @@
       <div class="container">
         <div class="settings-modal">
           <div class="display-completed">
-            <span>Hide completed to-dos?</span>
+            <span>Hide done</span>
             <label class="custom-toggle-label" for="custom-toggle">
               <input
                 type="checkbox"
@@ -26,17 +26,16 @@
         </div>
 
         <form>
-          <input
-            class="todo-input"
-            type="text"
-            placeholder="Sure, give yourself more shit to do"
-          />
+          <input class="todo-input" type="text" placeholder="add" />
           <button class="btn-submit" type="submit">+</button>
         </form>
-        <h3>Shit you have to do</h3>
-        <div id="todolist" class="todo-list-container"></div>
-        <div id="donelist" class="done-list-container">
-          <h3>Shit you have done gurl, gg.</h3>
+
+        <div id="todolist" class="todo-list-container">
+          <h3>To Do</h3>
+        </div>
+
+        <div id="list-completed-todos" class="done-list-container">
+          <h3 id="">Completed</h3>
         </div>
       </div>
     </main>

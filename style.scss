@@ -79,10 +79,30 @@ form {
     word-break: break-all;
   }
 }
+#todolist {
+}
 
-.completed {
-  opacity: 50%;
-  text-decoration: line-through;
+#list-completed-todos {
+  div {
+    opacity: 50%;
+    text-decoration: line-through;
+  }
+
+  .todo-label {
+    background-color: rgb(176, 3, 192);
+    position: relative;
+
+    &:after {
+      content: "";
+      display: grid;
+      background-color: white;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      justify-content: center;
+      align-content: center;
+    }
+  }
 }
 
 .display-completed {
@@ -167,4 +187,25 @@ form {
 
 .toggle-input:checked ~ .custom-toggle-input::after {
   transform: translateX(var(--height));
+}
+
+.todo-checkbox {
+  display: none;
+}
+
+.todo-label {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgb(199, 199, 199);
+  margin: 0px 10px;
+  background-color: rgb(240, 240, 240);
+  transition: all ease-in-out 0.5s;
+  border-radius: 50%;
+
+  &:hover {
+    border: 1px solid rgb(160, 160, 160);
+    background-color: white;
+    border-radius: 0%;
+  }
 }

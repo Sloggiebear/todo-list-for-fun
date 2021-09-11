@@ -12,8 +12,9 @@ const doneList = document.querySelector('.done-list-container');
 document.addEventListener('DOMContentLoaded', () => {
     checkforSavedtodos();
     checkforSavedCompledtodos();
-    console.log("loaded");
+    getLocalTodos();
 }); //Check for a JSON file for pre-existing todos or create one if it doesnt exist
+    getLocalSavedCompletedTodos()
 
 todoSubmit.addEventListener('click', event => {
     createNewToDo(event);
@@ -48,21 +49,18 @@ function createNewToDo(event) {
     //Create a new <div> tag. Put text into span. Append the <div> to the list and add inputs/buttons. 
     const newTodo = document.createElement('div');
     newTodo.classList.add('todo-item');
+    newTodo.dataset.status = "status-incomplete";
 
-    //Add a complete checkbox
+    //Add a checkbox inside a label
     const label = document.createElement('label')
-    label.classList.add('label');
+    label.classList.add('todo-label');    
+    label.dataset.type = "complete";
     newTodo.appendChild(label);
     const complete = document.createElement('input');
+    complete.classList.add('todo-checkbox');
     complete.type = "checkbox";
-    complete.dataset.type = "complete";
-    complete.dataset.status = "status-incomplete";
-    complete.classList.add('btn-checkbox');
     label.appendChild(complete);
-    //Add a label for the checkbox
     
-
-
     //Add the text of the todo as a span
     const todoText = document.createElement('span');
     todoText.innerText = todoInput.value;
@@ -84,38 +82,45 @@ function createNewToDo(event) {
 }
 
 function updateToDo(event) {
-    const item = event.target;
-    console.log(item);
+    let item = event.target;
+    console.log("this was clicked: ", item);
     
     if(item.dataset.type === "delete") {
-        console.log(item);
+        text=item.parentElement.innerText;
+        console.log("to be deleted:", text);
         item.parentElement.remove(); //removes the item from the to do list
-        removeItemFromSavedtodo(item);
-        removeItemFromSavedCompletedtodo(item);
+
+        if(item.parentElement.dataset.status === "status-incomplete") {
+            console.log("deleting: ", item.parentElement.innerText);
+            removeItemFromSavedtodo(item.parentElement.innerText);
+        }
+        if(item.parentElement.dataset.status === "status-complete") {
+            console.log("deleting: ", item.parentElement.innerText);
+            removeItemFromSavedCompletedtodo(item.parentElement.innerText);
+        }
 
     }
     if(item.dataset.type === "complete") {
 
-        if(item.checked = true){ //Remove it form the to-do list and add it to the done-list
-            item.parentElement.classList.toggle('completed');
-            item.dataset.status = "status-complete";
-            item.parentElement.remove();
-            doneList.appendChild(item.parentElement);
-            removeItemFromSavedtodo(item);
-            console.log("this is running")
+        if(item.parentElement.dataset.status === "status-incomplete"){ //Remove it form the to-do list and add it to the done-list
+            el = item;
+            el.parentElement.dataset.status = "status-complete";
+            el.parentElement.remove();
+            doneList.appendChild(el.parentElement);
+            removeItemFromSavedtodo(el);
             
             let savedcompletedtodos = checkforSavedCompledtodos();  //Update the saved done-list in local storage
-            const completedtodo = (item.parentElement.children[1].innerText);
+            const completedtodo = (el.parentElement.children[1].innerText);
             savedcompletedtodos.push(completedtodo);
             localStorage.setItem("savedcompletedtodos", JSON.stringify(savedcompletedtodos));
         } 
 
-        else if (item.parentElement.id = "donelist"){ 
-            item.parentElement.classList.toggle('completed');
-            item.dataset.status = "status-incomplete";
+        else if (item.parentElement.dataset.status === "status-complete"){ 
+            item.parentElement.dataset.status = "status-incomplete";
             item.parentElement.remove();
             todoList.appendChild(item.parentElement);
-            removeItemFromSavedCompletedtodo(item);
+            removeItemFromSavedCompletedtodo(item.parentElement.innerText);
+            addItemtoSavedtodo(item.parentElement.innerText);
         }
 
     }
@@ -125,25 +130,25 @@ function updateToDo(event) {
 function removeItemFromSavedtodo(event) {
         //removes the item from the local storage SAVEDTODOS
         const savedtodos = checkforSavedtodos(); 
-        const text = event.parentElement.children[1].innerText;
-        const index = savedtodos.indexOf(text);
+        const index = savedtodos.indexOf(event);
         savedtodos.splice(index, 1);
         localStorage.setItem("savedtodos", JSON.stringify(savedtodos));
 }
 
 function removeItemFromSavedCompletedtodo(event) {  
-            //removes the item from the local storage COMPLETEDSAVEDTODOS
-            const savedcompletedtodos = checkforSavedCompledtodos(); 
-            const text = event.parentElement.children[1].innerText;
-            const index = savedcompletedtodos.indexOf(text);
-            savedcompletedtodos.splice(index, 1);
-            localStorage.setItem("savedcompletedtodos", JSON.stringify(savedcompletedtodos));
+    //removes the item from the local storage COMPLETEDSAVEDTODOS
+    const savedcompletedtodos = checkforSavedCompledtodos(); 
+    const text = event;
+    const index = savedcompletedtodos.indexOf(text);
+    savedcompletedtodos.splice(index, 1);
+    localStorage.setItem("savedcompletedtodos", JSON.stringify(savedcompletedtodos));
     }
 
-
-function updateCompletedToDo(event) {
-    const item = event.target;
-    console.log(item);
+function addItemtoSavedtodo(text) {  
+    //adds the item to local storage SAVEDTODOS
+    const savedtodos = checkforSavedtodos(); 
+    savedtodos.push(text);
+    localStorage.setItem("savedtodos", JSON.stringify(savedtodos));
 }
 
 function toggleCompleted(event){
@@ -185,14 +190,17 @@ function getLocalTodos() {
     //Create a new <div> tag. Put text into span. Append the <div> to the list and add inputs/buttons. 
     const newTodo = document.createElement('div');
     newTodo.classList.add('todo-item');
+    newTodo.dataset.status = "status-incomplete";
 
-    //Add a complete checkbox
+    //Add a checkbox inside a label
+    const label = document.createElement('label')
+    label.classList.add('todo-label');
+    label.dataset.type = "complete";
+    newTodo.appendChild(label);
     const complete = document.createElement('input');
+    complete.classList.add('todo-checkbox');
     complete.type = "checkbox";
-    complete.dataset.type = "complete";
-    complete.dataset.status = "status-incomplete";
-    complete.classList.add('btn-checkbox');
-    newTodo.appendChild(complete);
+    label.appendChild(complete);
 
     //Add the text of the todo as a span
     const todoText = document.createElement('span');
@@ -219,17 +227,18 @@ function getLocalSavedCompletedTodos() {
     //Create a new <div> tag. Put text into span. Append the <div> to the list and add inputs/buttons. 
     const newTodo = document.createElement('div');
     newTodo.classList.add('todo-item');
-    newTodo.classList.add('completed');
+    newTodo.dataset.status = "status-complete";
 
 
-    //Add a complete checkbox
+    //Add a checkbox inside a label
+    const label = document.createElement('label')
+    label.classList.add('todo-label');
+    label.dataset.type = "complete";
+    newTodo.appendChild(label);
     const complete = document.createElement('input');
+    complete.classList.add('todo-checkbox');
     complete.type = "checkbox";
-    complete.dataset.type = "complete";
-    complete.dataset.status = "status-complete";
-    complete.classList.add('btn-checkbox');
-    newTodo.appendChild(complete);
-    // complete.checked = true;
+    label.appendChild(complete);
 
     //Add the text of the todo as a span
     const todoText = document.createElement('span');
