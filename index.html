@@ -8,38 +8,70 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main>
-      <div class="container">
-        <div class="settings-modal">
-          <div class="display-completed">
-            <span>Hide done</span>
-            <label class="custom-toggle-label" for="custom-toggle">
-              <input
-                type="checkbox"
-                class="toggle-input"
-                name="custom-toggle"
-                id="custom-toggle"
-              />
-              <div class="custom-toggle-input"></div>
-            </label>
-          </div>
-        </div>
+    <header id="header" class="header-bar">
+      <form>
+        <input class="todo-input" type="text" placeholder="add" />
+        <button class="btn-submit" type="submit">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            height="32px"
+            width="32px"
+          >
+            <path
+              d="M256,0C114.84,0,0,114.84,0,256S114.84,512,256,512,512,397.16,512,256,397.16,0,256,0Zm0,480C132.48,480,32,379.52,32,256S132.48,32,256,32,480,132.48,480,256,379.52,480,256,480Z"
+              fill="#fff"
+            />
+            <path
+              d="M368,240H272V144a16,16,0,0,0-32,0v96H144a16,16,0,0,0,0,32h96v96a16,16,0,0,0,32,0V272h96a16,16,0,0,0,0-32Z"
+              fill="#fff"
+            />
+          </svg>
+        </button>
+      </form>
 
-        <form>
-          <input class="todo-input" type="text" placeholder="add" />
-          <button class="btn-submit" type="submit">+</button>
-        </form>
-
-        <div id="todolist" class="todo-list-container">
-          <h3>To Do</h3>
-        </div>
-
-        <div id="list-completed-todos" class="done-list-container">
-          <h3 id="">Completed</h3>
+      <div class="btn-settings" id="btn-settings">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 498.59 512">
+          <path
+            d="M496.66,312.13l-47.06-36.8A179.27,179.27,0,0,0,450.71,256a184.55,184.55,0,0,0-1.11-19.33l47.1-36.82c8.75-6.91,11.16-19.18,5.57-29.4L453.33,85.78A23.07,23.07,0,0,0,425,75.61L369.49,97.9a189.08,189.08,0,0,0-33.32-19.35l-8.45-58.9A22.66,22.66,0,0,0,305.11,0H207c-11.49,0-21.22,8.45-22.59,19.43l-8.47,59.12a196.52,196.52,0,0,0-33.28,19.37L87,75.56a22.68,22.68,0,0,0-28.09,10l-49,84.8a22.88,22.88,0,0,0,5.55,29.52l47.06,36.78A188.36,188.36,0,0,0,61.35,256c0,5.87.37,12.12,1.07,19.33l-47.1,36.84c-8.73,6.91-11.12,19.18-5.55,29.4l48.94,84.67C64,436,76,440.4,87,436.42l55.53-22.3a191.76,191.76,0,0,0,33.34,19.35l8.45,58.88A22.66,22.66,0,0,0,207,512h98.14c11.49,0,21.22-8.45,22.59-19.43l8.47-59.1a195.85,195.85,0,0,0,33.28-19.37l55.68,22.36a22.74,22.74,0,0,0,28.09-10l49.2-85.1A23.05,23.05,0,0,0,496.66,312.13ZM483.75,330.9l-50.81,85.72-61.08-24.53a10.7,10.7,0,0,0-10.37,1.36c-13.23,9.9-26,17.34-39.1,22.7a10.66,10.66,0,0,0-6.53,8.36l-10.77,66.16-99.57-1.13-9.32-65a10.7,10.7,0,0,0-6.53-8.36,169.79,169.79,0,0,1-39-22.64,10.62,10.62,0,0,0-6.5-2.21,10.47,10.47,0,0,0-4,.76l-62.83,23.7L28.39,331.11a1.79,1.79,0,0,1,.15-2.19l51.78-40.47a10.71,10.71,0,0,0,4-9.73A180.32,180.32,0,0,1,82.68,256a184.43,184.43,0,0,1,1.65-22.72,10.69,10.69,0,0,0-4-9.73l-52-42.43L79.1,95.4l61.08,24.54a10.66,10.66,0,0,0,10.39-1.37,175.47,175.47,0,0,1,39.1-22.7,10.7,10.7,0,0,0,6.51-8.36L207,21.33l99.59,1.15,9.3,65a10.7,10.7,0,0,0,6.53,8.36,169.54,169.54,0,0,1,39,22.64,10.59,10.59,0,0,0,10.47,1.43l62.83-23.71,48.94,84.68a1.78,1.78,0,0,1-.15,2.17l-51.78,40.47a10.69,10.69,0,0,0-4,9.73A181.72,181.72,0,0,1,429.35,256a181.43,181.43,0,0,1-1.64,22.72,10.71,10.71,0,0,0,4,9.73l51.71,40.45A1.67,1.67,0,0,1,483.75,330.9Z"
+            transform="translate(-6.7)"
+          />
+          <path
+            d="M256,149.33A106.67,106.67,0,1,0,362.69,256,106.79,106.79,0,0,0,256,149.33Zm0,192A85.33,85.33,0,1,1,341.35,256,85.42,85.42,0,0,1,256,341.33Z"
+            transform="translate(-6.7)"
+          />
+        </svg>
+      </div>
+      <div id="settings-modal" class="d-none">
+        <div class="display-completed">
+          <span>Hide done</span>
+          <label class="custom-toggle-label" for="custom-toggle">
+            <input
+              type="checkbox"
+              class="toggle-input"
+              name="custom-toggle"
+              id="custom-toggle"
+            />
+            <div class="custom-toggle-input"></div>
+          </label>
         </div>
       </div>
-    </main>
+    </header>
 
+    <div class="container">
+      <div id="todolist" class="todo-list-container">
+        <h3>To Do</h3>
+      </div>
+
+      <div id="list-completed-todos" class="done-list-container">
+        <h3 id="">Completed</h3>
+      </div>
+    </div>
+
+    <footer>Thanks to Kyle from web dev simplified</footer>
+
+    <!-- scripts -->
+    <script src="./settings.js"></script>
     <script src="./todo.js"></script>
   </body>
 </html>

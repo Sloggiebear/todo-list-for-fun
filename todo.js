@@ -8,7 +8,6 @@ const doneList = document.querySelector('.done-list-container');
 
 
 //Event Listeners
-
 document.addEventListener('DOMContentLoaded', () => {
     checkforSavedtodos();
     checkforSavedCompledtodos();
@@ -34,7 +33,6 @@ showhideCompleted.addEventListener('click', event => {
 
 
 //Functions
-
 function createNewToDo(event) {
     
     //Prevent the default action of submitting the form
@@ -83,7 +81,6 @@ function createNewToDo(event) {
 
 function updateToDo(event) {
     let item = event.target;
-    console.log("this was clicked: ", item);
     
     if(item.dataset.type === "delete") {
         text=item.parentElement.innerText;
