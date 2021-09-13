@@ -68,7 +68,7 @@ function createNewToDo(event) {
     const del = document.createElement('button');
     del.dataset.type = "delete";
     del.classList.add('btn-delete');
-    del.innerHTML = '<img class="image-delete" src="./img/delete.svg" >';
+    del.innerHTML = '<img class="image-delete" width="20px" height="20px" src="./img/delete.svg" />';
     newTodo.appendChild(del);
 
     //Append the entire div to the list
@@ -208,7 +208,7 @@ function getLocalTodos() {
     const del = document.createElement('button');
     del.dataset.type = "delete"
     del.classList.add('btn-delete');
-    del.innerHTML = '<img class="image-delete" src="./img/delete.svg" >';
+    del.innerHTML = '<img class="image-delete" width="20px" height="20px" src="./img/delete.svg" >';
     newTodo.appendChild(del);
 
     //Append the entire div to the list
@@ -246,7 +246,7 @@ function getLocalSavedCompletedTodos() {
     const del = document.createElement('button');
     del.dataset.type = "delete"
     del.classList.add('btn-delete');
-    del.innerHTML = '<img class="image-delete" src="./img/delete.svg" >';
+    del.innerHTML = '<img class="image-delete" width="20px" height="20px" src="./img/delete.svg" >';
     newTodo.appendChild(del);
 
     //Append the entire div to the list

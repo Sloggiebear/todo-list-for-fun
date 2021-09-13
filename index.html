@@ -22,23 +22,36 @@
     </header>
 
     <div class="container">
-      <div class="modal-wrapper">
-        <div id="settings-modal" class="d-none">
-          <div class="modal-content">
-            <h2>Settings</h2>
-            <div class="display-completed">
-              <span>Hide the to-do tasks you have completed?</span>
-              <label class="custom-toggle-label" for="custom-toggle">
-                <input
-                  type="checkbox"
-                  class="toggle-input"
-                  name="custom-toggle"
-                  id="custom-toggle"
-                />
-                <div class="custom-toggle-input"></div>
-              </label>
-            </div>
+      <div id="settings-modal" class="modal-wrapper d-none">
+        <div class="modal-content">
+          <span id="btn-close" class="close">&times;</span>
+          <h2>Settings</h2>
+          <div class="display-completed">
+            <span>Hide the to-do tasks you have completed?</span>
+            <label class="custom-toggle-label" for="custom-toggle">
+              <input
+                type="checkbox"
+                class="toggle-input"
+                name="custom-toggle"
+                id="custom-toggle"
+              />
+              <div class="custom-toggle-input"></div>
+            </label>
           </div>
+          <div class="display-completed">
+            <span>Switch to Dark Mode</span>
+            <label class="custom-toggle-label" for="darkmode-toggle">
+              <input
+                type="checkbox"
+                class="toggle-input"
+                name="darkmode-toggle"
+                id="darkmode-toggle"
+              />
+              <div class="custom-toggle-input"></div>
+            </label>
+          </div>
+          <button onclick="" class="btn-print">Print incomplete tasks</button>
+          <button onclick="" class="btn-export">Export tasks as PDF</button>
         </div>
       </div>
 
