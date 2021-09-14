@@ -40,7 +40,7 @@ body {
 .container {
   width: 90%;
   max-width: 990px;
-  margin: auto;
+  margin: 0px auto 40px auto;
 }
 
 form {
@@ -114,27 +114,37 @@ form {
   margin-left: auto;
   margin-right: 10px;
   position: relative;
+  cursor: pointer;
+
+  img {
+    transition: opacity ease 0.5s;
+  }
+
+  &:hover img {
+    opacity: 0;
+  }
 
   &::after {
     content: "";
-    background-image: url("../img/delete-open.svg");
-    background-color: $color-accent;
-    background-size: contain;
+    background-image: url(../img/delete-open.svg);
+    background-color: #9b005f;
+    background-size: 20px 20px;
     background-repeat: no-repeat;
     background-position: center center;
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     margin: auto;
-    opacity: 1;
+    opacity: 0;
     position: absolute;
-    top: 0px;
-    right: -25px;
-    transition: opacity ease 0.5s;
+    transform: translate(12px, -4px);
+    transition: opacity ease 0.5s, transform ease 0.5s;
+    pointer-events: none;
   }
 
   &:hover::after {
     opacity: 1;
+    transform: translate(-22px, -4px);
   }
 }
 
@@ -374,4 +384,13 @@ form {
       }
     }
   }
+}
+
+footer {
+  background-color: #3f3f3f;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.8rem;
+  margin-top: auto;
 }
