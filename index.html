@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header id="header" class="header-bar">
+    <header id="header" class="header-bar d-print-none">
       <form>
         <input
-          class="todo-input"
+          class="todo-input d-print-none"
           type="text"
-          placeholder="Well, what shit have you got to get done biatch?"
+          placeholder="Well, look busy bitch..."
         />
         <button class="btn-submit" type="submit"></button>
       </form>
@@ -22,7 +22,7 @@
     </header>
 
     <div class="container">
-      <div id="settings-modal" class="modal-wrapper d-none">
+      <div id="settings-modal" class="modal-wrapper d-none d-print-none">
         <div class="modal-content">
           <span id="btn-close" class="close">&times;</span>
           <h2>Settings</h2>
@@ -38,7 +38,7 @@
               <div class="custom-toggle-input"></div>
             </label>
           </div>
-          <div class="display-completed">
+          <!-- <div class="display-completed">
             <span>Switch to Dark Mode</span>
             <label class="custom-toggle-label" for="darkmode-toggle">
               <input
@@ -49,14 +49,26 @@
               />
               <div class="custom-toggle-input"></div>
             </label>
-          </div>
-          <button onclick="" class="btn-print">Print incomplete tasks</button>
-          <button onclick="" class="btn-export">Export tasks as PDF</button>
+          </div> -->
+          <button onclick="window.print();return false;" class="btn-print">
+            Print incomplete tasks
+          </button>
         </div>
       </div>
 
       <div id="todolist" class="todo-list-container">
         <h3>To Do</h3>
+        <div id="empty-todos" class="empty-todos">
+          <svg class="">
+            <Circle cx="50%" cy="50%" r="50" stroke-width="1" />
+          </svg>
+          <span
+            ><strong
+              >This is just a pie chart about procrastination</strong
+            ></span
+          >
+          <span class="small">...please add a to-do item.</span>
+        </div>
       </div>
 
       <div id="list-completed-todos" class="done-list-container">
@@ -64,8 +76,9 @@
       </div>
     </div>
 
-    <footer>
-      Copyright Amber and Emerald Ltd.
+    <footer class="d-print-none">
+      &copy; Copyright
+      <a href="https://www.amberandemerald.com">Amber and Emerald Ltd.</a>
       <script>
         document.write(new Date().getFullYear());
       </script>

@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap");
+@media print {
+  .d-print-none {
+    display: none;
+  }
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -15,6 +21,12 @@ body {
   height: 100%;
   font-family: "Quicksand", sans-serif;
   padding-top: 110px;
+}
+
+h3 {
+  padding-bottom: 8px;
+  border-bottom: solid 1px #d6d6d6;
+  margin-bottom: 10px;
 }
 
 .header-bar {
@@ -36,6 +48,29 @@ body {
   width: 90%;
   max-width: 990px;
   margin: 0px auto 40px auto;
+}
+
+.todo-list-container {
+  margin-bottom: 30px;
+}
+
+.empty-todos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  padding: 20px;
+  margin: 40px 0px 20px 0px;
+  text-align: center;
+}
+
+.empty-todos circle {
+  fill: #9b005f;
+}
+
+.empty-todos span {
+  margin-bottom: 10px;
 }
 
 form {
@@ -153,6 +188,33 @@ form input:focus {
   height: 35px;
 }
 
+.btn-print {
+  padding: 20px 20px 20px 50px;
+  color: white;
+  background-color: #9b005f;
+  border: 0px;
+  font-weight: 600;
+  position: relative;
+}
+
+.btn-print::before {
+  content: "";
+  background-image: url(../img/printer.svg);
+  background-size: contain;
+  display: block;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.btn-print:hover {
+  background-image: linear-gradient(45deg, #9b005f, #ff00aa);
+  cursor: pointer;
+}
+
 .image-delete,
 .image-complete {
   pointer-events: none;
@@ -186,6 +248,10 @@ form input:focus {
 
 .d-none {
   display: none;
+}
+
+.d-flex {
+  display: flex;
 }
 
 .modal-wrapper {
@@ -382,4 +448,15 @@ footer {
   padding: 20px;
   font-size: 0.8rem;
   margin-top: auto;
+  width: 100%;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: lightgray;
+  border-bottom: dotted 1px lightgray;
 }

@@ -4,6 +4,12 @@ $color-accent: #9b005f;
 $linear-gradient: linear-gradient(45deg, $color-accent, rgba(255, 0, 170, 1));
 $header-bar-size: 80px;
 
+@media print {
+  .d-print-none {
+    display: none;
+  }
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -20,6 +26,12 @@ body {
   height: 100%;
   font-family: "Quicksand", sans-serif;
   padding-top: $header-bar-size + 30px;
+}
+
+h3 {
+  padding-bottom: 8px;
+  border-bottom: solid 1px rgb(214, 214, 214);
+  margin-bottom: 10px;
 }
 
 .header-bar {
@@ -41,6 +53,29 @@ body {
   width: 90%;
   max-width: 990px;
   margin: 0px auto 40px auto;
+}
+
+.todo-list-container {
+  margin-bottom: 30px;
+}
+
+.empty-todos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  padding: 20px;
+  margin: 40px 0px 20px 0px;
+  text-align: center;
+
+  circle {
+    fill: $color-accent;
+  }
+
+  span {
+    margin-bottom: 10px;
+  }
 }
 
 form {
@@ -158,6 +193,33 @@ form {
   height: 35px;
 }
 
+.btn-print {
+  padding: 20px 20px 20px 50px;
+  color: white;
+  background-color: $color-accent;
+  border: 0px;
+  font-weight: 600;
+  position: relative;
+
+  &::before {
+    content: "";
+    background-image: url(../img/printer.svg);
+    background-size: contain;
+    display: block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &:hover {
+    background-image: $linear-gradient;
+    cursor: pointer;
+  }
+}
+
 .image-delete,
 .image-complete {
   pointer-events: none;
@@ -180,8 +242,6 @@ form {
     word-break: break-all;
   }
 }
-#todolist {
-}
 
 .display-completed {
   display: flex;
@@ -193,6 +253,10 @@ form {
 
 .d-none {
   display: none;
+}
+
+.d-flex {
+  display: flex;
 }
 
 .modal-wrapper {
@@ -393,4 +457,15 @@ footer {
   padding: 20px;
   font-size: 0.8rem;
   margin-top: auto;
+  width: 100%;
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      color: lightgray;
+      border-bottom: dotted 1px lightgray;
+    }
+  }
 }

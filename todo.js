@@ -4,33 +4,45 @@ const todoSubmit = document.querySelector('.btn-submit');
 const todoList = document.querySelector('.todo-list-container');
 const showhideCompleted = document.querySelector('.toggle-input');
 const doneList = document.querySelector('.done-list-container');
-
+const emptytoList = document.querySelector('#empty-todos');
 
 
 //Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
     checkforSavedtodos();
     checkforSavedCompledtodos();
+    emptyMessage();
     getLocalTodos();
-}); //Check for a JSON file for pre-existing todos or create one if it doesnt exist
     getLocalSavedCompletedTodos()
+}); //Check local storage for pre-existing data or create local storage to store new data
 
 todoSubmit.addEventListener('click', event => {
     createNewToDo(event);
-})
+});
 
 todoList.addEventListener('click', event => {
     updateToDo(event);
-})
+});
 
 doneList.addEventListener('click', event => {
     updateToDo(event);
-})
+});
 
 showhideCompleted.addEventListener('click', event => {
     toggleCompleted(event);
-})
+});
 
+//Check if there are any to-dos
+function emptyMessage() {
+    let savedtodos = localStorage.getItem("savedtodos");
+    console.log("is", savedtodos, "length: ", savedtodos.length);
+    if (savedtodos.length > 2) {
+        emptytoList.classList.add('d-none');
+    }
+    else {
+        emptytoList.classList.remove('d-none');
+    }
+}
 
 //Functions
 function createNewToDo(event) {
@@ -68,11 +80,15 @@ function createNewToDo(event) {
     const del = document.createElement('button');
     del.dataset.type = "delete";
     del.classList.add('btn-delete');
+    del.classList.add('d-print-none');
     del.innerHTML = '<img class="image-delete" width="20px" height="20px" src="./img/delete.svg" />';
     newTodo.appendChild(del);
 
     //Append the entire div to the list
-    todoList.append(newTodo)
+    todoList.append(newTodo);
+
+    //Hide the empty list message if there is a todo 
+    emptyMessage();
 
     //reset todo input value
     todoInput.value="";
@@ -96,6 +112,8 @@ function updateToDo(event) {
             removeItemFromSavedCompletedtodo(item.parentElement.innerText);
         }
 
+        emptyMessage();
+
     }
     if(item.dataset.type === "complete") {
 
@@ -110,6 +128,8 @@ function updateToDo(event) {
             const completedtodo = (el.parentElement.children[1].innerText);
             savedcompletedtodos.push(completedtodo);
             localStorage.setItem("savedcompletedtodos", JSON.stringify(savedcompletedtodos));
+
+            emptyMessage();
         } 
 
         else if (item.parentElement.dataset.status === "status-complete"){ 
@@ -118,6 +138,8 @@ function updateToDo(event) {
             todoList.appendChild(item.parentElement);
             removeItemFromSavedCompletedtodo(item.parentElement.innerText);
             addItemtoSavedtodo(item.parentElement.innerText);
+
+            emptyMessage();
         }
 
     }
@@ -158,6 +180,7 @@ function checkforSavedtodos() {
     let savedtodos;
     if (localStorage.getItem("savedtodos") === null) {
         savedtodos = [];
+        localStorage.setItem("savedtodos", JSON.stringify(savedtodos));
     } else {
         savedtodos = JSON.parse(localStorage.getItem("savedtodos"));
     }
@@ -168,6 +191,7 @@ function checkforSavedCompledtodos() {
     let savedcompletedtodos;
     if (localStorage.getItem("savedcompletedtodos") === null) {
         savedcompletedtodos = [];
+        localStorage.setItem("savedcompletedtodos", JSON.stringify(savedcompletedtodos));
     } else {
         savedcompletedtodos = JSON.parse(localStorage.getItem("savedcompletedtodos"));
     }
@@ -208,6 +232,7 @@ function getLocalTodos() {
     const del = document.createElement('button');
     del.dataset.type = "delete"
     del.classList.add('btn-delete');
+    del.classList.add('d-print-none');
     del.innerHTML = '<img class="image-delete" width="20px" height="20px" src="./img/delete.svg" >';
     newTodo.appendChild(del);
 
@@ -246,6 +271,7 @@ function getLocalSavedCompletedTodos() {
     const del = document.createElement('button');
     del.dataset.type = "delete"
     del.classList.add('btn-delete');
+    del.classList.add('d-print-none');
     del.innerHTML = '<img class="image-delete" width="20px" height="20px" src="./img/delete.svg" >';
     newTodo.appendChild(del);
 
