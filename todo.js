@@ -37,10 +37,10 @@ function emptyMessage() {
     let savedtodos = localStorage.getItem("savedtodos");
     console.log("is", savedtodos, "length: ", savedtodos.length);
     if (savedtodos.length > 2) {
-        emptytoList.classList.add('d-none');
+        emptytoList.classList.add('hide');
     }
     else {
-        emptytoList.classList.remove('d-none');
+        emptytoList.classList.remove('hide');
     }
 }
 

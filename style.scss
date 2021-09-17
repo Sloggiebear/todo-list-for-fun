@@ -68,6 +68,10 @@ h3 {
   padding: 20px;
   margin: 40px 0px 20px 0px;
   text-align: center;
+  overflow: hidden;
+  max-height: 250px;
+  opacity: 1;
+  transition: max-height ease 1s, opacity ease 1s;
 
   circle {
     fill: $color-accent;
@@ -257,6 +261,13 @@ form {
 
 .d-flex {
   display: flex;
+}
+
+.hide {
+  max-height: 0px;
+  opacity: 0;
+  padding: 0px;
+  margin: 0px;
 }
 
 .modal-wrapper {
