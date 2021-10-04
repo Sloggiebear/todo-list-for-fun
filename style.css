@@ -141,12 +141,12 @@ form input:focus {
 
 .btn-delete {
   width: 20px;
+  min-width: 20px;
   height: 20px;
-  border-radius: 50%;
+  min-height: 20px;
   border: none;
   background-color: transparent;
-  margin-left: auto;
-  margin-right: 10px;
+  margin: 0px 10px 0px auto;
   position: relative;
   cursor: pointer;
 }
@@ -231,15 +231,12 @@ form input:focus {
   align-items: center;
   margin-bottom: 10px;
   background-color: #f7f7f7;
+  padding: 10px;
 }
 
 .todo-item span {
-  flex-grow: 1;
   padding: 10px;
-  margin-right: 10px;
   max-width: 80%;
-  overflow: hidden;
-  word-break: break-all;
 }
 
 .display-completed {
@@ -394,9 +391,11 @@ form input:focus {
 .todo-label {
   display: block;
   width: 20px;
+  min-width: 20px;
   height: 20px;
-  border: 1px solid #c7c7c7;
+  min-height: 20px;
   margin: 0px 10px;
+  border: 1px solid #c7c7c7;
   background-color: #f0f0f0;
   transition: all ease-in-out 0.5s;
   border-radius: 50%;

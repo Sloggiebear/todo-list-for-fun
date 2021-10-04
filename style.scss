@@ -146,12 +146,12 @@ form {
 
 .btn-delete {
   width: 20px;
+  min-width: 20px;
   height: 20px;
-  border-radius: 50%;
+  min-height: 20px;
   border: none;
   background-color: transparent;
-  margin-left: auto;
-  margin-right: 10px;
+  margin: 0px 10px 0px auto;
   position: relative;
   cursor: pointer;
 
@@ -236,14 +236,11 @@ form {
   align-items: center;
   margin-bottom: 10px;
   background-color: rgb(247, 247, 247);
+  padding: 10px;
 
   span {
-    flex-grow: 1;
     padding: 10px;
-    margin-right: 10px;
     max-width: 80%;
-    overflow: hidden;
-    word-break: break-all;
   }
 }
 
@@ -401,9 +398,11 @@ form {
 .todo-label {
   display: block;
   width: 20px;
+  min-width: 20px;
   height: 20px;
-  border: 1px solid rgb(199, 199, 199);
+  min-height: 20px;
   margin: 0px 10px;
+  border: 1px solid rgb(199, 199, 199);
   background-color: rgb(240, 240, 240);
   transition: all ease-in-out 0.5s;
   border-radius: 50%;
